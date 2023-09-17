@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">ivorie</string>
+    <!-- login -->
+    <string name="title_activity_login">ivorie</string>
+    <string name="login_progress_signing_in">In progress&#8230;</string>
+    <string name="creating_in_progress">In progress&#8230;</string>
+    <string name="register_new_account_hint">If this is your first time to login, an account will be created for you automatically.</string>
+    <string name="check_terms_and_conditions_hint">Please agree to terms and privacy policies</string>
+    <string name="prompt_country_calling_code">Country</string>
+    <string name="prompt_phone_number">Mobile phone number</string>
+    <string name="validation_code">One-Time Password</string>
+    <string name="obtain_validation_code">Get OTP</string>
+    <string name="obtain_code_success">OTP has been sent to your phone.</string>
+    <string name="obtain_code_failure">SMS sent failure. Please try again.</string>
+    <string name="action_sign_in_register"><b>Log In</b></string>
+
+    <string-array name="country_calling_code">
+        <item>US +1</item>
+        <item>CN +86</item>
+        <item>IN +91</item>
+        <item>BR +55</item>
+    </string-array>
+
+    <string name="title_activity_terms_and_conditions">Terms of Service</string>
+    <string name="i_certify_hereby">I agree to the </string>
+    <string name="terms_and_conditions_hyperlink">Terms of Service</string>
+    <string name="privacy_policies_hyperlink">Privacy Policies</string>
+
+    <string name="error_input_field_empty">This field is empty</string>
+    <string name="error_phone_number_empty">Please enter your mobile phone number</string>
+    <string name="error_invalid_phone_number">Phone number is too short</string>
+    <string name="error_validation_code_empty">Please enter the one-time password you have received</string>
+    <string name="error_validation_code_too_short">The code is too short</string>
+    <string name="error_validation_code_incorrect">The one-time password is wrong</string>
+    <string name="error_server_no_response">The server is out of service, please try again</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_earn">Earn</string>
+    <string name="title_vault">Vault</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

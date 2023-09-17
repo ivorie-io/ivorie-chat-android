@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_earning_users"
+        android:icon="@drawable/ic_outline_video_camera_front_24"
+        android:title="@string/title_chat" />
+
+    <item
+        android:id="@+id/navigation_paying_users"
+        android:icon="@drawable/ic_outline_attach_money_24"
+        android:title="@string/title_earn" />
+
+    <item
+        android:id="@+id/navigation_vault"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_vault" />
+
+</menu>

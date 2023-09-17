@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dropdown_menu_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/large_padding"
+    android:text="@string/prompt_country_calling_code"
+    android:textColor="@color/item_label"
+    android:textSize="@dimen/text_size_large" />

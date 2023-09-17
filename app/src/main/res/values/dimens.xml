@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  Copyright (C) 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<resources>
+
+    <!--
+         Define some key view padding values. This is useful because the values can be used in
+         multiple views and changed from one central location. It also gives us the ability to
+         provide alternate values for different device configurations using resource directory
+         qualifiers.
+    -->
+    <dimen name="extra_small_padding">2dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="medium_padding">8dp</dimen>
+    <dimen name="large_padding">16dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="double_large_padding">32dp</dimen>
+    <dimen name="listview_item_padding">16dp</dimen>
+    <dimen name="chat_list_item_padding">8dp</dimen>
+
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
+    <dimen name="large_margin_double">32dp</dimen>
+    <dimen name="large_margin_quadruple">64dp</dimen>
+
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_default">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_headline">48sp</dimen>
+    <dimen name="text_size_headline_size_2">36sp</dimen>
+    <dimen name="text_size_headline_size_3">24sp</dimen>
+    <dimen name="text_size_headline_size_4">20sp</dimen>
+    <dimen name="event_item_margin_large">16dp</dimen>
+    <dimen name="event_item_margin_medium">8dp</dimen>
+    <dimen name="event_item_margin_small">4dp</dimen>
+    <dimen name="event_item_padding_large">16dp</dimen>
+    <dimen name="event_item_padding_medium">8dp</dimen>
+    <dimen name="event_item_padding_small">2dp</dimen>
+    <dimen name="extra_large_margin">80dp</dimen>
+    <dimen name="owner_icon_size">192dp</dimen>
+    <dimen name="chairperson_icon_size">24dp</dimen>
+    <dimen name="bottom_button_margin">48dp</dimen>
+    <dimen name="video_min_height">192dp</dimen>
+    <dimen name="video_max_height">256dp</dimen>
+
+    <dimen name="spacing_default">10dp</dimen>
+
+    <dimen name="carer_icon_size">144dp</dimen>
+    <dimen name="carer_intro_circle">8dp</dimen>
+
+    <dimen name="service_icon_height">96dp</dimen>
+    <dimen name="profile_icon_size">192dp</dimen>
+    <dimen name="vieo_uploader_icon_size">36dp</dimen>
+    <dimen name="empty_hint_icon_size">144dp</dimen>
+
+    <dimen name="button_corner_radius">4dp</dimen>
+
+</resources>

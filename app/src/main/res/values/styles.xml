@@ -1,0 +1,40 @@
+<!--
+     This file defines various styles for the application. As this file is located in the /values
+     subdirectory the styles defined here will be used by default unless the styles are redefined
+     inside a more specific resource directory such as /values-sw600dp.
+-->
+
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="android:windowNoTitle">false</item>
+        <item name="colorPrimary">@color/ivorie_theme</item>
+        <item name="colorPrimaryVariant">@color/ivorie_theme</item>
+        <item name="colorPrimaryDark">@color/ivorie_theme</item>
+        <item name="colorAccent">@color/ivorie_theme</item>
+        <item name="android:listPreferredItemHeightLarge">160dp</item>
+    </style>
+
+    <style name="ToolBarActivityTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:listPreferredItemHeightLarge">180dp</item>
+        <item name="colorPrimary">@color/ivorie_theme</item>
+        <item name="colorPrimaryVariant">@color/ivorie_theme</item>
+        <item name="colorAccent">@color/ivorie_theme</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_baseline_keyboard_arrow_left_24</item>
+    </style>
+
+    <style name="LoginFormContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!-- Splash Screen theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/black</item>
+    </style>
+
+</resources>
