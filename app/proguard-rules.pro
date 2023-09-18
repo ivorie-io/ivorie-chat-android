@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+##---------------proguard configuration for Gson  ----------
+-keep class com.google.gson.** { *; }
+-keep class com.ivoriechat.android.database.User { *; }
+-keep class com.ivoriechat.android.database.VerifiedUser { *; }
+
+-keep class com.ivoriechat.android.entities.ValidationCodeResponse { *; }
+
+-dontwarn com.squareup.okhttp.**
+-ignorewarnings

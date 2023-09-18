@@ -94,6 +94,10 @@
 
     <color name="reserved_already_pressed">#9B9B9B</color>
 
+    <color name="green_500">#02ee02</color>
+
+    <color name="red_500">#ff2c14</color>
+
     <!--light blue A200-->
     <color name="pro_blue">#40c4ff</color>
 
