@@ -9,10 +9,11 @@ import androidx.room.TypeConverters;
 
 import com.ivoriechat.android.utils.BigDecimalConverter;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, VerifiedUser.class}, version = 1, exportSchema = false)
 @TypeConverters({BigDecimalConverter.class})
 public abstract class IvorieDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
+    public abstract VerifiedUserDAO verifiedUserDAO();
 
     private static IvorieDatabase INSTANCE;
 

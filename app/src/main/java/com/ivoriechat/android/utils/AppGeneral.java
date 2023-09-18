@@ -3,6 +3,7 @@ package com.ivoriechat.android.utils;
 public class AppGeneral {
     public static final String SERVER_SECURE_PROTOCOL = "https://";
     public static final String SERVER_DOMAIN_NAME = "service.ivoriechat.com";
+    public static final String COLON = ":";
     public static final String SERVER_PORT_NUMBER = "8443";
     public static final String WEB_MODULE_PATH = "/webWeb";
 
@@ -13,7 +14,6 @@ public class AppGeneral {
 
     // Constants for Login Activity
     public static final String USER_EXIST = "user_exist";
-    public static final String CORRECT_PASSWORD = "correct_password";
     public static final String LOGIN_SUCCESS = "login_success";
     public static final String TOKEN = "token";
     public static final String TOKEN_VALID = "token_valid";
@@ -67,4 +67,9 @@ public class AppGeneral {
     public static final String UPDATE_NAME_API = "/UpdateNameServlet";
     public static final String FETCH_CHAT_LIST_API = "/FetchChatCollectionServlet";
     public static final String FETCH_USER_PROFILE_API = "/FetchUserProfileServlet";
+
+    public static final String AUTHORIZATION = "Authorization";
+
+    public static final String CHAT_TYPE = "chat_type";
+    public static final String MENTOR_ID = "mentor_id";
 }
