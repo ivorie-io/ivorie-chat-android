@@ -47,4 +47,17 @@
     <string name="dollar_sign">$</string>
     <string name="qualification">Qualification</string>
     <string name="button_chat">Chat</string>
+    <string name="request_for_camera_and_audio_permissions">You need to grant permission to camera and mic to start video chat</string>
+    <!-- Prompt for RTC -->
+    <string name="livecast_initiated">Live stream initiated</string>
+    <string name="livecast_initiation_failure">Live stream initiation failed</string>
+    <string name="livecast_terminated">Live stream terminated</string>
+    <string name="connecting_livecast_in_progress">Connecting</string>
+    <string name="remote_stream_received">Remote stream received</string>
+    <string name="livecast_retrieval_failure">Fetching live stream failure</string>
+    <string name="having_disconnected_livecast">You have disconnected live stream</string>
+    <string name="no_livecast_in_progress">No live stream available</string>
+    <string name="available_for_chat">Available for chat</string>
+    <string name="connecting_video_call_in_progress">Connecing in progress</string>
+    <string name="video_call_failed">Video call failed</string>
 </resources>

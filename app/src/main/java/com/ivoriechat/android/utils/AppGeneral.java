@@ -68,8 +68,51 @@ public class AppGeneral {
     public static final String FETCH_CHAT_LIST_API = "/FetchChatCollectionServlet";
     public static final String FETCH_USER_PROFILE_API = "/FetchUserProfileServlet";
 
+    // Fragment name
+    public static final String VIDEO_CHAT_FRAGMENT = "video_chat_fragment";
+
     public static final String AUTHORIZATION = "Authorization";
 
     public static final String CHAT_TYPE = "chat_type";
     public static final String MENTOR_ID = "mentor_id";
+
+    //WebRTC
+    public static final String TYPE = "type";
+    public static final String TARGET = "target";
+    public static final String SDP = "sdp";
+    public static final String CANDIDATE = "candidate";
+    public static final String SDP_M_ID = "sdpMid";
+    public static final String SDP_M_LINE_INDEX = "sdpMLineIndex";
+    public static final String LIVECAST_ID = "livecastId";
+    public static final String INSPECTOR_ID = "inspectorId";
+    public static final String LIVECAST_INITIATION = "livecast_initiation";
+    public static final String WATCH_LIVECAST_REQUEST = "watch_livecast_request";
+    public static final String NOTIFICATION_FOR_WATCH_VIDEO_REQUEST = "notification_for_watch_video_request";
+    public static final String INSPECTOR_VIDEO_ANSWER = "inspector_video_answer";
+    public static final String LIVECASTER_VIDEO_OFFER = "livecaster_video_offer";
+    public static final String REPLY_TO_LIVECASTER = "reply_to_livecaster";
+    public static final String NEW_ICE_CANDIDATE_FROM_INSPECTOR = "new_ice_candidate_from_inspector";
+    public static final String NEW_ICE_CANDIDATE_FROM_LIVECASTER = "new_ice_candidate_from_livecaster";
+    public static final String RTC_PEER_CONNECTION_CONNECTED = "rtc_peer_connection_connected";
+    public static final String RTC_PEER_CONNECTION_CLOSED = "rtc_peer_connection_closed";
+    public static final String TERMINATE_LIVECAST = "terminate_livecast";
+    public static final String TERMINATE_LIVECAST_RESPONSE = "terminate_livecast_response";
+
+    public static final String GENERAL_PUBLIC = "general_public";
+    public static final String LIVECAST_PROVIDER = "livecast_provider";
+    public static final String RESULT = "result";
+    public static final String WEBSOCKET_CONNECTION_CALLBACK = "websocket_connection_callback";
+    public static final String CONNECTION_STATUS = "connection_status";
+    public static final String OPEN = "open";
+    public static final String CLOSE = "close";
+    public static final String ERROR = "error";
+    public static final String BEING_MENTOR = "being_mentor";
+    public static final String READY_FOR_MENTORING = "ready_for_mentoring";
+    public static final String WATCH_VIDEO_REQUEST = "watch_video_request";
+    public static final String VIDEO_ANSWER = "video_answer";
+    public static final String VIDEO_OFFER = "video_offer";
+    public static final String NEW_ICE_CANDIDATE = "new_ice_candidate";
+    public static final String READY_FOR_MENTORING_RESPONSE = "ready_for_mentoring_response";
+    public static final String WATCH_VIDEO_REQUEST_RESPONSE = "watch_video_request_response";
+    public static final String FIND_VIDEO_SUCCESS = "find_video_success";
 }
