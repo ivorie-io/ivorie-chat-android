@@ -60,4 +60,11 @@
     <string name="available_for_chat">Available for chat</string>
     <string name="connecting_video_call_in_progress">Connecing in progress</string>
     <string name="video_call_failed">Video call failed</string>
+    <string name="balance_label">Balance</string>
+    <string name="balance_unit">$</string>
+    <string name="balance_value">balance</string>
+    <string name="usdt">USDT</string>
+    <string name="usdt_balance_text">usdt_balance</string>
+    <string name="usdc">USDC</string>
+    <string name="usdc_balance_text">usdc_balance</string>
 </resources>

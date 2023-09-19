@@ -26,8 +26,7 @@ public class VaultFragment extends Fragment {
         binding = FragmentVaultBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        vaultViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        // vaultViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
