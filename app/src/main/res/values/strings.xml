@@ -68,4 +68,67 @@
     <string name="usdt_balance_text">usdt_balance</string>
     <string name="usdc">USDC</string>
     <string name="usdc_balance_text">usdc_balance</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Strings for application for verification -->
+    <string name="user_name_label">Name</string>
+    <string name="user_name_hint">Your real name</string>
+
+    <string name="portrait">Portrait</string>
+    <string name="select_image_source">Select the source for images</string>
+
+    <string name="expected_usage">Role</string>
+    <string name="expected_usage_notes">Select what you want to use ivorie for.</string>
+    <string name="chat_to_earn_hint">Chat with people to earn money.</string>
+    <string name="pay_to_chat_hint">Pay others to chat with you.</string>
+
+    <string name="hourly_rate_label">Rate</string>
+    <string name="hourly_rate_hint">Hourly rate in USD</string>
+    <string name="hourly_rate_subtitle">How much you\'d like to get paid to chat with</string>
+    <string name="hourly_rate_hint_for_chat_to_earn">How much you\'d like to get paid to chat with</string>
+    <string name="hourly_rate_hint_for_pay_to_chat">How much you\'re willing to pay others to chat with you</string>
+
+    <string name="self_description_label">About</string>
+    <string name="self_description_hint">More details about you</string>
+    <string name="self_description_notes">Let people know more about you.</string>
+    <string name="apply_label">Apply</string>
+
+    <string name="skills_label">Skill</string>
+    <string name="skills_hint_default">Enter skills you desire or you possess. 5 items at most.</string>
+    <string name="skills_hint_for_chat_to_earn">Skills you have. 5 items at most.</string>
+    <string name="skills_hint_for_pay_to_chat">Skills you expect from people chatting with you. 5 items at most.</string>
+
+    <string name="apply_for_verification">Apply for verification</string>
+    <string name="apply">Apply</string>
+    <string name="chat_to_earn">Chat to earn</string>
+    <string name="pay_to_chat">Pay to chat</string>
+
+    <string-array name="hourly_rate_in_usd">
+        <item>3</item>
+        <item>6</item>
+        <item>9</item>
+        <item>15</item>
+        <item>18</item>
+        <item>24</item>
+        <item>30</item>
+        <item>36</item>
+        <item>48</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+        <item>150</item>
+        <item>300</item>
+        <item>600</item>
+        <item>900</item>
+        <item>1200</item>
+        <item>1500</item>
+        <item>3000</item>
+        <item>6000</item>
+        <item>9000</item>
+        <item>12000</item>
+    </string-array>
+
+    <string name="submit_success">Success of application</string>
+    <string name="submit_failure">Application failed</string>
 </resources>

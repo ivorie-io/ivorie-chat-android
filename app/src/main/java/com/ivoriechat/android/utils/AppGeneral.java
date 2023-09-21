@@ -43,7 +43,7 @@ public class AppGeneral {
 
     public static final String LOGIN_WITH_SMS_API = "/LoginWithSMSServlet";
     public static final String VALIDATION_CODE_API = "/GenerateValidationCodeServlet";
-    public static final String APPLY_FOR_MENTORSHIP_API = "/ApplyForMentorshipServlet";
+    public static final String APPLY_FOR_VERIFICATION_API = "/ApplyForMentorshipServlet";
     public static final String GET_MENTOR_COLLECTION_API = "/GetMentorCollectionServlet";
     public static final String GET_LIKED_MENTOR_COLLECTION_API  = "/GetLikedMentorCollectionServlet";
     public static final String UPDATE_WALLET_ADDRESS_API = "/UpdateWalletAddressServlet";
@@ -70,6 +70,7 @@ public class AppGeneral {
 
     // Fragment name
     public static final String VIDEO_CHAT_FRAGMENT = "video_chat_fragment";
+    public static final String IN_PROGRESS_FRAGMENT = "in_progress_fragment";
 
     public static final String AUTHORIZATION = "Authorization";
 
@@ -115,4 +116,14 @@ public class AppGeneral {
     public static final String READY_FOR_MENTORING_RESPONSE = "ready_for_mentoring_response";
     public static final String WATCH_VIDEO_REQUEST_RESPONSE = "watch_video_request_response";
     public static final String FIND_VIDEO_SUCCESS = "find_video_success";
+
+    public static final String USER_REAL_NAME = "userRealName";
+    public static final String HOURLY_RATE = "hourlyRate";
+    public static final String EXPECTED_USAGE = "expectedUsage";
+    public static final String EXPERTISE_LIST = "expertiseList";
+    public static final String SELF_INTRODUCTION = "selfIntroduction";
+
+    public static final String PORTRAIT_ATTACHED = "portrait_attached";
+    public static final String PORTRAIT_FILE = "portrait_file";
+    public static final String FILE_SIZE = "file_size";
 }

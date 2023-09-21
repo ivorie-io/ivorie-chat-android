@@ -1,5 +1,6 @@
 package com.ivoriechat.android.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ivoriechat.android.R;
@@ -29,6 +31,8 @@ public class VaultFragment extends Fragment {
 
     private static final String TAG = "VaultFragment";
 
+    private LinearLayout mApplyLayout;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         VaultViewModel vaultViewModel =
@@ -39,8 +43,8 @@ public class VaultFragment extends Fragment {
 
         // vaultViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         EthereumViewModel ethereumViewModel = new ViewModelProvider(this).get(EthereumViewModel.class);
-        // Dapp ivorieDapp = new Dapp(getString(R.string.app_name), getString(R.string.app_url));
         Dapp ivorieDapp = new Dapp(getString(R.string.app_name), getString(R.string.app_url));
+        /*
         ethereumViewModel.connect(ivorieDapp, (result) -> {
             if (result instanceof RequestError) {
                 Log.e(TAG, "Ethereum connection error: ${result.message}");
@@ -48,6 +52,14 @@ public class VaultFragment extends Fragment {
                 Log.d(TAG, "Ethereum connection result: $result");
             }
             return null;
+        });
+        */
+
+        mApplyLayout = root.findViewById(R.id.apply_layout);
+        mApplyLayout.setOnClickListener(v -> {
+            // open new page
+            Intent intent = new Intent(getActivity(), VerificationActivity.class);
+            startActivity(intent);
         });
 
         return root;

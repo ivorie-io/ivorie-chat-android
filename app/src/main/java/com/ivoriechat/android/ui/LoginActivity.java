@@ -17,6 +17,7 @@ import com.ivoriechat.android.R;
 import com.ivoriechat.android.entities.ValidationCodeResponse;
 import com.ivoriechat.android.utils.AppGeneral;
 import com.ivoriechat.android.authentication.AccountGeneral;
+import com.ivoriechat.android.utils.Utils;
 
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
@@ -392,13 +393,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
 
         @Override
         protected String doInBackground(Void... voids) {
-            URL url=null;
-            try {
-                url = new URL(AppGeneral.SERVER_SECURE_PROTOCOL + AppGeneral.SERVER_DOMAIN_NAME + ":" + AppGeneral.SERVER_PORT_NUMBER + AppGeneral.WEB_MODULE_PATH
-                        + AppGeneral.LOGIN_WITH_SMS_API);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+            URL url = Utils.constructURL(AppGeneral.LOGIN_WITH_SMS_API);
 
             Gson gson = new GsonBuilder()
                     .serializeNulls()

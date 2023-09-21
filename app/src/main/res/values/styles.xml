@@ -17,19 +17,12 @@
     </style>
 
     <style name="ToolBarActivityTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:listPreferredItemHeightLarge">180dp</item>
         <item name="colorPrimary">@color/ivorie_theme</item>
         <item name="colorPrimaryVariant">@color/ivorie_theme</item>
         <item name="colorAccent">@color/ivorie_theme</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_baseline_keyboard_arrow_left_24</item>
-    </style>
-
-    <style name="LoginFormContainer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">16dp</item>
     </style>
 
     <!-- Splash Screen theme. -->
