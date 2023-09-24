@@ -6,7 +6,6 @@ import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.ivoriechat.android.utils.AppGeneral;
 
@@ -29,14 +28,11 @@ public class AuthenUtils {
     a new auth token will not be generated, and the server will not be contacted. Intended for use by the authenticator, not directly by applications.
      */
             token = mAccountManager.peekAuthToken(mAccount, AccountGeneral.AUTHTOKENTYPE);
-            Log.i("AuthenUtils:", "token" + token);
         } else if (mAccountList.length > 1) {
             SharedPreferences pref = context.getSharedPreferences(AppGeneral.PREF_NAME, Context.MODE_PRIVATE);
             String mPhoneNumber = pref.getString(AppGeneral.USER_MOBILE_PHONE_NUMBER, null);
             Account account = new Account(mPhoneNumber, AccountGeneral.ACCOUNT_TYPE);
             token = mAccountManager.peekAuthToken(account, AccountGeneral.AUTHTOKENTYPE);
-            Log.i("AuthenUtils:", "mAccountList" + account.name + " " + account.toString());
-            Log.i("AuthenUtils:", "token" + token);
         }
 
         return token;
@@ -73,14 +69,12 @@ public class AuthenUtils {
             mAccount = mAccountList[0];
             token = mAccountManager.peekAuthToken(mAccount, AccountGeneral.AUTHTOKENTYPE);
             mAccountManager.invalidateAuthToken(AccountGeneral.ACCOUNT_TYPE, token);
-            Log.i("AuthenUtils:", "token " + token + " has been invalidated");
         } else if (mAccountList.length > 1) {
             SharedPreferences pref = context.getSharedPreferences(AppGeneral.PREF_NAME, Context.MODE_PRIVATE);
             String mPhoneNumber = pref.getString(AppGeneral.USER_MOBILE_PHONE_NUMBER, null);
             Account account = new Account(mPhoneNumber, AccountGeneral.ACCOUNT_TYPE);
             token = mAccountManager.peekAuthToken(account, AccountGeneral.AUTHTOKENTYPE);
             mAccountManager.invalidateAuthToken(AccountGeneral.ACCOUNT_TYPE, token);
-            Log.i("AuthenUtils:", "token " + token + " has been invalidated");
         }
 
     }

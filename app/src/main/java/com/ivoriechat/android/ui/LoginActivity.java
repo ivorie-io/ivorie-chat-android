@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.ivoriechat.android.R;
+import com.ivoriechat.android.entities.LogInResponse;
 import com.ivoriechat.android.entities.ValidationCodeResponse;
 import com.ivoriechat.android.utils.AppGeneral;
 import com.ivoriechat.android.authentication.AccountGeneral;
@@ -78,9 +79,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
     private Map<String,String> COUNTRY_CALLING_CODE_MAP; // a map from readable country calling code to actual calling code itself
 
     private AccountManager mAccountManager;
-    private String mAuthTokenType;
     private String mAccountType;
-    private Account mAccount;
     private static final String TAG = "LoginActivity";
     private CheckBox agreeCheckbox;
     private Boolean termsAndConditionsAgreed = false;
@@ -102,22 +101,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
         mAccountManager = AccountManager.get(getApplicationContext());
         Account[] mAccountList = mAccountManager.getAccountsByType(AppGeneral.ACCOUNT_TYPE);
         if(mAccountList.length > 0){
-            if(mAccountList.length == 1) {
-                mAccount = mAccountList[0];
-                // mEncryptedPassword = mAccountManager.getPassword(mAccount);
-                mPhoneNumber = mAccount.name;
-                // Log.i(TAG, "mEncryptedPassword=" + mEncryptedPassword);
-                Log.i(TAG, "mPhoneNumber=" + mPhoneNumber);
-            } else {
-                SharedPreferences pref = getSharedPreferences(AppGeneral.PREF_NAME, Context.MODE_PRIVATE);
-                mPhoneNumber = pref.getString(AppGeneral.USER_MOBILE_PHONE_NUMBER, null);
-                for(Account account: mAccountList) {
-                    if(TextUtils.equals(account.name, mPhoneNumber)) {
-                        mAccount = account;
-                        // mEncryptedPassword = mAccountManager.getPassword(mAccount);
-                    }
-                }
-            }
+            mPhoneNumber = mAccountList[0].name;
         }
 
         if (getIntent().getStringExtra(AccountManager.KEY_ACCOUNT_NAME) != null) {
@@ -141,7 +125,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
                     }
                 });
 
-        mObtainValidationCodeButton = findViewById(R.id.obation_code_button);
+        mObtainValidationCodeButton = findViewById(R.id.obtain_code_button);
         mObtainValidationCodeButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -196,7 +180,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
         mPhoneNumber = mPhoneNumberView.getText().toString();
         mCountryCallingCode = prepareCountryCallingCode(mCountryCallingCodeSelect.getText().toString());
 
-        boolean valid = false;
+        boolean valid = true;
         View focusView = null;
 
         if (TextUtils.isEmpty(mCountryCallingCodeSelect.getText().toString())) {
@@ -211,7 +195,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
             focusView = mPhoneNumberView;
             valid = false;
         } else {
-            Pattern p = Pattern.compile("\\d{11}");
+            Pattern p = Pattern.compile("\\d{6,14}");
             Matcher m = p.matcher(mPhoneNumber);
             if(!m.matches()){
                 mPhoneNumberView.setError(getString(R.string.error_invalid_phone_number));
@@ -230,7 +214,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
     }
 
     private Boolean validateFields() {
-        boolean valid = false;
+        boolean valid = true;
         View focusView = null;
 
         // Reset errors.
@@ -255,7 +239,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
             focusView = mPhoneNumberView;
             valid = false;
         } else {
-            Pattern p = Pattern.compile("\\d{8,14}");
+            Pattern p = Pattern.compile("\\d{6,14}");
             Matcher m = p.matcher(mPhoneNumber);
             if(!m.matches()){
                 mPhoneNumberView.setError(getString(R.string.error_invalid_phone_number));
@@ -295,6 +279,14 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
 
     private void obtainValidationCode() {
         Boolean valid = validateFieldsForOTP();
+
+        if (!termsAndConditionsAgreed) {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.main_body_layout),
+                    R.string.check_terms_and_conditions_hint, Snackbar.LENGTH_LONG);
+            snackbar.show();
+            return;
+        }
+
         if (valid) {
             new ObtainValidationCodeTask().execute();
             mObtainValidationCodeButton.setEnabled(false);
@@ -430,89 +422,70 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
             Bundle data = new Bundle();
             // Integer ownerIDinDB = null;
             String authToken = null;
-            Integer userId = null; // USER_ID
 
             //Create a json object from the response string
             JSONObject jObject = null;
 
+            Gson gson = new GsonBuilder()
+                    .serializeNulls()
+                    .create();
+
+            showProgress(false);
+
             if(authFeedback == null){
                 // the server has returned an empty inputstream
-                mPhoneNumberView.setError(getString(R.string.error_server_no_response));
-                mPhoneNumberView.requestFocus();
-                // simply show and hide the relevant UI components.
-                showProgress(false);
-            } else {
-                try {
-                    jObject = new JSONObject(authFeedback);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                try{
-                    if(jObject != null){
-                        // Fetch the response header "loginSuccess"
-                        // Check if it is true
-                        if (jObject.getBoolean(AppGeneral.LOGIN_SUCCESS)){
-                            authToken = jObject.getString(AppGeneral.TOKEN);
-                            userId = jObject.getInt(AppGeneral.USER_ID);
-                            AccountGeneral.TokenValid = true;
-                        } else if (!jObject.getBoolean(AppGeneral.USER_EXIST)){
-                            authToken = AppGeneral.USER_NOT_EXIST;
-                        } else if (!jObject.getBoolean(AppGeneral.SMS_CODE_CORRECT)){
-                            authToken = AppGeneral.INVALIDE_VALIDATION_CODE;
-                        }
-                    }
-                }catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.main_body_layout),
+                        R.string.error_server_no_response, Snackbar.LENGTH_LONG);
+                snackbar.show();
+                return;
             }
 
-            if(!authToken.isEmpty()){
-                if(authToken.equals(AppGeneral.INVALIDE_VALIDATION_CODE)){
-                    mValidationCodeView.setError(getString(R.string.error_validation_code_incorrect));
-                    mValidationCodeView.setText("");
-                    mValidationCodeView.requestFocus();
-                    // simply show and hide the relevant UI components.
-                    showProgress(false);
-                } else {
-                    // mAccountManager.addAccountExplicitly()
+            LogInResponse response = gson.fromJson(authFeedback, LogInResponse.class);
+            if (response.getLoginSuccess()) {
+                authToken = response.getToken();
+                AccountGeneral.TokenValid = true;
+                pref = myContext.getSharedPreferences(AppGeneral.PREF_NAME, Context.MODE_PRIVATE);
+                editor = pref.edit();
+                editor.putString(AppGeneral.USER_MOBILE_PHONE_NUMBER, mPhoneNumber);
 
-                    pref = myContext.getSharedPreferences(AppGeneral.PREF_NAME, Context.MODE_PRIVATE);
-                    editor = pref.edit();
-                    // editor.putString(AppGeneral.OWNER_ID, ownerIDinDB);
-                    // editor.putInt(AppGeneral.OWNER_ID, ownerIDinDB);
-                    editor.putInt(AppGeneral.USER_ID, userId);
-                    editor.putString(AppGeneral.USER_MOBILE_PHONE_NUMBER, mPhoneNumber);
+                // Commit the editing changes
+                editor.apply();
 
-                    // Commit the editing changes
-                    editor.apply();
+                data.putString(AccountManager.KEY_ACCOUNT_NAME, mPhoneNumber);
+                data.putString(AccountManager.KEY_ACCOUNT_TYPE, mAccountType);
+                data.putString(AccountManager.KEY_AUTHTOKEN, authToken);
+                Account account = new Account(mPhoneNumber, mAccountType);
+                // Log.i("before problem: ", mAccountType);
+                mAccountManager.addAccountExplicitly(account, authToken, null);
+                // Above is where the problem is located.
+                mAccountManager.setPassword(account, authToken);
+                // Adds an auth token to the AccountManager cache for an account.
+                mAccountManager.setAuthToken(account, AppGeneral.AUTHTOKENTYPE, authToken);
+                System.out.println("Authtoken has been set:" + authToken);
+                //Start the chat service after login successfully
+                // startChatService();
+                setAccountAuthenticatorResult(data);
+                setResult(RESULT_OK);
+                finish();
+                Intent intent = new Intent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setClass(myContext, MainActivity.class);
+                startActivity(intent);
+                return;
+            }
 
-                    data.putString(AccountManager.KEY_ACCOUNT_NAME, mPhoneNumber);
-                    data.putString(AccountManager.KEY_ACCOUNT_TYPE, mAccountType);
-                    data.putString(AccountManager.KEY_AUTHTOKEN, authToken);
-                    // long tokenExpireTime = System.currentTimeMillis() + 30000;
-                    // data.putLong(AbstractAccountAuthenticator.KEY_CUSTOM_TOKEN_EXPIRY, tokenExpireTime);
-                    Account account = new Account(mPhoneNumber, mAccountType);
-                    // Log.i("before problem: ", mAccountType);
-                    mAccountManager.addAccountExplicitly(account, authToken, null);
-                    // Above is where the problem is located.
-                    mAccountManager.setPassword(account, authToken);
-                    // Adds an auth token to the AccountManager cache for an account.
-                    mAccountManager.setAuthToken(account, AppGeneral.AUTHTOKENTYPE, authToken);
-                    System.out.println("Authtoken has been set:" + authToken);
-                    // Sets one userdata key for an account. Intended by use for the authenticator to stash state for itself, not directly by application
-                    // mAccountManager.setUserData(account, AccountGeneral.OWNER_ID_IN_DB, Integer.toString(ownerIDinDB));
-                    //Start the chat service after login successfully
-                    // startChatService();
-                    setAccountAuthenticatorResult(data);
-                    setResult(RESULT_OK);
-                    finish();
-                    Intent intent = new Intent();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.setClass(myContext, MainActivity.class);
-                    startActivity(intent);
-                }
+            // there are some errors with login
+            String errorCode = response.getErrorCode();
+            if (TextUtils.equals(errorCode, AppGeneral.SMS_CODE_NOT_CORRECT)) {
+                mValidationCodeView.setError(getString(R.string.error_validation_code_incorrect));
+                mValidationCodeView.setText("");
+                mValidationCodeView.requestFocus();
+            }
+
+            if (TextUtils.equals(errorCode, AppGeneral.USER_NOT_EXIST)) {
+                mPhoneNumberView.setError(getString(R.string.error_user_not_exist));
+                mPhoneNumberView.setText("");
+                mPhoneNumberView.requestFocus();
             }
         }
 
@@ -526,21 +499,15 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
     private class ObtainValidationCodeTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
-            URL url=null;
-            try {
-                url = new URL(AppGeneral.SERVER_SECURE_PROTOCOL + AppGeneral.SERVER_DOMAIN_NAME + ":" + AppGeneral.SERVER_PORT_NUMBER + AppGeneral.WEB_MODULE_PATH
-                        + AppGeneral.VALIDATION_CODE_API);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+            URL url = Utils.constructURL(AppGeneral.VALIDATION_CODE_API);
 
             Gson gson = new GsonBuilder()
                     .serializeNulls()
                     .create();
 
             JsonObject json = new JsonObject();
-            json.addProperty(AppGeneral.USER_MOBILE_PHONE_NUMBER, gson.toJson(mPhoneNumber));
-            json.addProperty(AppGeneral.COUNTRY_CALLING_CODE, gson.toJson(mCountryCallingCode));
+            json.addProperty(AppGeneral.USER_MOBILE_PHONE_NUMBER, mPhoneNumber);
+            json.addProperty(AppGeneral.COUNTRY_CALLING_CODE, mCountryCallingCode);
 
             String responseString = null;
 
@@ -595,7 +562,7 @@ public class LoginActivity extends AccountAuthenticatorActivity implements AppCo
                 long millis = endTime - System.currentTimeMillis();
                 int seconds = (int) (millis / 1000);
                 // seconds = seconds % 60;
-                mObtainValidationCodeButton.setText(Integer.toString(seconds) + "秒后重新获取");
+                mObtainValidationCodeButton.setText(Integer.toString(seconds) + " seconds");
                 mObtainValidationCodeButton.setTextColor(getResources().getColor(R.color.text_entered));
                 timerHandler.postDelayed(this, 500);
                 if (millis <= 0) {

@@ -24,11 +24,12 @@ public class AppGeneral {
     public static final String VALIDATION_CODE = "validation_code";
     public static final String VALIDATION_CODE_SENT = "validation_code_sent";
     public static final String VALIDATION_TOKEN = "validation_token";
+    public static final String SMS_CODE_NOT_CORRECT = "sms_code_not_correct";
     public static final String SMS_CODE_CORRECT = "sms_code_correct";
     public static final String INVALIDE_VALIDATION_CODE = "invalide_validation_code";
     public static final String USER_NOT_EXIST = "user_not_exist";
 
-    public static final String ACCOUNT_TYPE = "com.jieyoubaoapp.android";
+    public static final String ACCOUNT_TYPE = "com.ivoriechat.android";
     public static final String AUTHTOKEN_TYPE_FULL_ACCESS = "Full access";
     public static final String AUTHTOKENTYPE = "access_all";
     public static final String OWNER_ID_IN_DB = "owner_id_in_database";
