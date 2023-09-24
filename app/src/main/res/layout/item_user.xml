@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_real_name"
-            android:textSize="@dimen/text_size_large"
+            android:textSize="@dimen/text_size_medium"
             android:maxLines="1"
             android:ellipsize="end"
             android:textStyle="bold"
@@ -72,9 +72,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/event_item_padding_small"
-            android:layout_marginTop="@dimen/event_item_padding_small">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/currency_symbol"

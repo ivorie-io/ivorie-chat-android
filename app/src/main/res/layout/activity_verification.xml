@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.VerificationActivity">
+
+    <LinearLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_padding">
+
+            <ImageView
+                android:id="@+id/user_name_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imageview_description"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_person_24"
+                app:tint="@color/ivorie_theme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/user_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:text="@string/user_name_label"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/user_name_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/user_name_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/large_margin"
+                android:background="@android:color/transparent"
+                android:hint="@string/user_name_hint"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/user_name_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/select_portrait_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/medium_padding">
+
+            <ImageView
+                android:id="@+id/select_portrait_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/imageview_description"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_portrait_24"
+                android:text="@string/portrait"
+                app:tint="@color/ivorie_theme"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/select_portrait_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/small_margin"
+                android:text="@string/portrait"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/select_portrait_icon"/>
+
+            <ImageView
+                android:id="@+id/portrait_imageview"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="@dimen/large_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/select_portrait_label"
+                android:src="@drawable/ic_baseline_image_24" />
+
+            <Button
+                android:id="@+id/select_portrait_button"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/expected_usage_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_padding">
+
+            <ImageView
+                android:id="@+id/expected_usage_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imageview_description"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_construction_24"
+                app:tint="@color/ivorie_theme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/expected_usage_notes"/>
+
+            <TextView
+                android:id="@+id/expected_usage_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:text="@string/expected_usage"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/expected_usage_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/expected_usage_notes"/>
+
+            <RadioGroup
+                android:id="@+id/expected_usage_radio_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large_margin"
+                android:orientation='horizontal'
+                app:layout_constraintStart_toEndOf="@+id/expected_usage_label"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/expected_usage_notes">
+
+                <RadioButton
+                    android:id="@+id/chat_to_earn_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_to_earn" />
+
+                <RadioButton
+                    android:id="@+id/pay_to_chat_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_margin"
+                    android:text="@string/pay_to_chat" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/expected_usage_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:text="@string/expected_usage_notes"
+                android:textColor="@color/grey_400"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/expected_usage_radio_group"
+                app:layout_constraintTop_toBottomOf="@+id/expected_usage_radio_group" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/payment_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_padding">
+
+            <ImageView
+                android:id="@+id/payment_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imageview_description"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_monetization_on_24"
+                app:tint="@color/ivorie_theme"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/hourly_rate_hint_text"/>
+
+            <TextView
+                android:id="@+id/payment_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:text="@string/hourly_rate_label"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/payment_icon"
+                app:layout_constraintBottom_toTopOf="@+id/hourly_rate_hint_text"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hourly_rate_select_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large_margin"
+                android:hint="@string/hourly_rate_hint"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/payment_label"
+                app:layout_constraintBottom_toTopOf="@+id/hourly_rate_hint_text">
+
+                <AutoCompleteTextView
+                    android:id="@+id/hourly_rate_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/hourly_rate_hint_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:text="@string/hourly_rate_subtitle"
+                android:textColor="@color/grey_400"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/hourly_rate_select_container"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_rate_select_container" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/skills_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_padding">
+
+            <ImageView
+                android:id="@+id/skills_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imageview_description"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_construction_24"
+                app:tint="@color/ivorie_theme"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/skills_hint_text"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/skills_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:text="@string/skills_label"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/skills_hint_text"
+                app:layout_constraintStart_toEndOf="@+id/skills_icon" />
+
+            <EditText
+                android:id="@+id/skills_input_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="@dimen/large_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/skills_label"
+                app:layout_constraintBottom_toTopOf="@+id/skills_hint_text"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/skills_chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/skills_label"
+                app:layout_constraintBottom_toTopOf="@+id/skills_hint_text">
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/skills_hint_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:text="@string/skills_hint_default"
+                android:textColor="@color/grey_400"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/skills_chip_group"
+                app:layout_constraintTop_toBottomOf="@+id/skills_chip_group" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/self_description_section_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/white"
+            android:padding="@dimen/medium_padding">
+
+            <ImageView
+                android:id="@+id/job_description_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/imageview_description"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_article_24"
+                app:tint="@color/ivorie_theme"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/job_description_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:text="@string/self_description_label"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/job_description_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/job_description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/medium_padding">
+
+            <EditText
+                android:id="@+id/self_description_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/self_description_hint"
+                android:background="@android:color/transparent"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:lineSpacingExtra="8sp"
+                android:paddingLeft="@dimen/medium_padding"
+                android:paddingRight="@dimen/medium_padding"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/text_label"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <View
+                android:id="@+id/self_description_underline"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="@dimen/large_margin"
+                android:layout_marginTop="@dimen/large_margin"
+                android:background="@color/grey_200"
+                app:layout_constraintTop_toBottomOf="@+id/self_description_edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/self_description_hint_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/self_description_notes"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/grey_400"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                app:layout_constraintTop_toBottomOf="@+id/self_description_underline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_margin"
+            style="@style/Widget.MaterialComponents.Button"
+            app:cornerRadius="@dimen/button_corner_radius"
+            android:text="@string/apply_label"
+            android:textSize="@dimen/text_size_default"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

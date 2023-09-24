@@ -7,4 +7,4 @@
     android:padding="@dimen/large_padding"
     android:text="@string/prompt_country_calling_code"
     android:textColor="@color/item_label"
-    android:textSize="@dimen/text_size_large" />
+    android:textSize="@dimen/text_size_medium" />

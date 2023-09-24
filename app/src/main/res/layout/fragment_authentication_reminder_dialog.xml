@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/large_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.AuthenticationReminderDialogFragment">
+
+    <LinearLayout
+        android:id="@+id/authentication_reminder_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/large_margin"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/update_hint_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/remind_authentication_dialog_title"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_medium"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/authentication_reminder_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authentication_reminder_title">
+
+        <TextView
+            android:id="@+id/remind_authentication_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/large_margin"
+            android:layout_marginRight="@dimen/large_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:textSize="@dimen/text_size_medium"
+            android:text="@string/remind_authentication_content" />
+
+        <TextView
+            android:id="@+id/easy_authentication_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/large_margin"
+            android:layout_marginRight="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/large_margin"
+            android:textSize="@dimen/text_size_default"
+            android:text="@string/easy_authentication_hint" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authentication_reminder_content"/>
+
+    <LinearLayout
+        android:id="@+id/go_to_authentication_button_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <Button
+            android:id="@+id/remind_me_later_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/authenticate_later"
+            android:textColor="@color/text_label"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/divider_grey" />
+
+        <Button
+            android:id="@+id/login_now_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/authenticate_now"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/ivorie_theme"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,9 @@ import com.ivoriechat.android.R;
 import com.ivoriechat.android.databinding.ActivityMainBinding;
 import com.ivoriechat.android.utils.RetrievalService;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity implements EarningUsersFragment.OnRetrievalServiceListener {
 
     private ActivityMainBinding binding;

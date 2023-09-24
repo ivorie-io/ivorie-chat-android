@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -56,12 +58,17 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'pub.devrel:easypermissions:3.0.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'com.google.android.material:material:1.4.0'
+    kapt 'androidx.room:room-compiler:2.5.2'
     implementation 'androidx.navigation:navigation-fragment:2.7.2'
     implementation 'androidx.navigation:navigation-ui:2.7.2'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    implementation 'org.webrtc:google-webrtc:1.0.32006'
+    implementation 'io.metamask.androidsdk:metamask-android-sdk:0.1.2'
+    // dagger-hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    annotationProcessor 'androidx.room:room-compiler:2.5.2'
 }
