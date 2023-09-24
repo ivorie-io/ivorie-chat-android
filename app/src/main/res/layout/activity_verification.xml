@@ -383,7 +383,7 @@
                 android:lineSpacingExtra="8sp"
                 android:paddingLeft="@dimen/medium_padding"
                 android:paddingRight="@dimen/medium_padding"
-                android:textSize="@dimen/text_size_large"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/text_label"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
