@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ivoriechat.android.R;
+import com.ivoriechat.android.authentication.AuthenUtils;
 import com.ivoriechat.android.databinding.FragmentVaultBinding;
 import com.ivoriechat.android.utils.AppGeneral;
 import com.ivoriechat.android.utils.VaultViewModel;
@@ -57,6 +58,13 @@ public class VaultFragment extends Fragment {
 
         mApplyLayout = root.findViewById(R.id.apply_layout);
         mApplyLayout.setOnClickListener(v -> {
+
+            if (!AuthenUtils.checkIfEnteredAccountInfoBefore(getActivity())) {
+                AuthenticationReminderDialogFragment reminderDialogFragment = new AuthenticationReminderDialogFragment();
+                reminderDialogFragment.show(getParentFragmentManager(), AppGeneral.AUTHENTICATION_REMINDER_DIALOG_FRAGMENT);
+                return;
+            }
+
             // open new page
             Intent intent = new Intent(getActivity(), VerificationActivity.class);
             startActivity(intent);

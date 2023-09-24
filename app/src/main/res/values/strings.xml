@@ -134,4 +134,11 @@
     <string name="submit_failure">Application failed</string>
 
     <string name="work_in_progress">In progress...</string>
+
+    <!-- Authentication dialog fragment -->
+    <string name="remind_authentication_dialog_title">Please login</string>
+    <string name="remind_authentication_content">This feature requires authentication. Please log in to use it.</string>
+    <string name="easy_authentication_hint">Hint: It is very easy to log in, and it takes less than 30 seconds.</string>
+    <string name="authenticate_later">Dismiss</string>
+    <string name="authenticate_now">Log in</string>
 </resources>

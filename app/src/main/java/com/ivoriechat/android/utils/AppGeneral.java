@@ -72,6 +72,7 @@ public class AppGeneral {
     // Fragment name
     public static final String VIDEO_CHAT_FRAGMENT = "video_chat_fragment";
     public static final String IN_PROGRESS_FRAGMENT = "in_progress_fragment";
+    public static final String AUTHENTICATION_REMINDER_DIALOG_FRAGMENT = "authentication_reminder_dialog_fragment";
 
     public static final String AUTHORIZATION = "Authorization";
 
