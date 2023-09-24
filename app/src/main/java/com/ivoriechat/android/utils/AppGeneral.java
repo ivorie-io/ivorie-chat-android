@@ -122,8 +122,9 @@ public class AppGeneral {
     public static final String USER_REAL_NAME = "userRealName";
     public static final String HOURLY_RATE = "hourlyRate";
     public static final String EXPECTED_USAGE = "expectedUsage";
-    public static final String EXPERTISE_LIST = "expertiseList";
+    public static final String EXPERTISE_LIST = "expertise_list";
     public static final String SELF_INTRODUCTION = "selfIntroduction";
+    public static final String APPLICATION_DATA = "application_data";
 
     public static final String PORTRAIT_ATTACHED = "portrait_attached";
     public static final String PORTRAIT_FILE = "portrait_file";

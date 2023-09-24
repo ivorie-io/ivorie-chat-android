@@ -42,12 +42,17 @@ import com.ivoriechat.android.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -291,21 +296,31 @@ public class VerificationActivity extends AppCompatActivity {
             json.addProperty(AppGeneral.USER_REAL_NAME, mUserRealName);
             json.addProperty(AppGeneral.HOURLY_RATE, mHourlyRate);
             json.addProperty(AppGeneral.EXPECTED_USAGE, mExpectedUsage);
-            json.addProperty(AppGeneral.EXPERTISE_LIST, gson.toJson(mExpertiseList));
             json.addProperty(AppGeneral.SELF_INTRODUCTION, mSelfIntroduction);
 
-            json.addProperty(AppGeneral.PORTRAIT_ATTACHED, Boolean.TRUE.toString());
+            // json.addProperty(AppGeneral.PORTRAIT_ATTACHED, Boolean.TRUE.toString());
             byte[] encodedImageData = Base64.getEncoder().encode(mPortraitRawData);
-            json.addProperty(AppGeneral.PORTRAIT_FILE, new String(encodedImageData));
-            json.addProperty(AppGeneral.FILE_SIZE, mPortraitRawData.length);
+            // json.addProperty(AppGeneral.PORTRAIT_FILE, new String(encodedImageData));
+            // json.addProperty(AppGeneral.FILE_SIZE, mPortraitRawData.length);
 
             String authToken = AuthenUtils.peekAuthToken(getApplicationContext());
-
             String responseString = null;
 
-            MediaType MEDIA_TYPE_JSON = MediaType.get("application/json; charset=utf-8");
             OkHttpClient client = new OkHttpClient();
-            RequestBody body = RequestBody.create(gson.toJson(json), MEDIA_TYPE_JSON);
+            RequestBody body = null;
+            try {
+                body = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
+                        .addFormDataPart(AppGeneral.APPLICATION_DATA, URLEncoder.encode(gson.toJson(json), "UTF-8"))
+                        .addFormDataPart(AppGeneral.EXPERTISE_LIST, URLEncoder.encode(gson.toJson(mExpertiseList), "UTF-8"))
+                        .addFormDataPart(AppGeneral.PORTRAIT_ATTACHED, Boolean.TRUE.toString())
+                        .addFormDataPart(AppGeneral.PORTRAIT_FILE, new String(encodedImageData))
+                        .addFormDataPart(AppGeneral.FILE_SIZE, Integer.toString(mPortraitRawData.length))
+                        .build();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
             Request request = new Request.Builder()
                     .url(url)
                     .header(AppGeneral.AUTHORIZATION, authToken)
